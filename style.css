@@ -1510,39 +1510,87 @@ footer {
   }
 }
 
-/* Animations and Other Scripts */
-document.addEventListener('DOMContentLoaded', function() {
-  // Theme Toggle
-  const themeToggle = document.getElementById('theme-toggle');
-  const moonIcon = document.getElementById('moon-icon');
-  const sunIcon = document.getElementById('sun-icon');
-  
-  // Check for saved theme preference or use system preference
-  const savedTheme = localStorage.getItem('theme');
-  const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  
-  if (savedTheme === 'light' || (!savedTheme && !systemPrefersDark)) {
-      document.body.classList.add('light-mode');
-      moonIcon.style.display = 'block';
-      sunIcon.style.display = 'none';
-  } else {
-      moonIcon.style.display = 'none';
-      sunIcon.style.display = 'block';
-  }
-  
-  themeToggle.addEventListener('click', function() {
-      document.body.classList.toggle('light-mode');
-      const isLight = document.body.classList.contains('light-mode');
-      
-      if (isLight) {
-          moonIcon.style.display = 'block';
-          sunIcon.style.display = 'none';
-          localStorage.setItem('theme', 'light');
-      } else {
-          moonIcon.style.display = 'none';
-          sunIcon.style.display = 'block';
-          localStorage.setItem('theme', 'dark');
-      }
-  });
-  
-  
+/* Services Overview */
+.services-overview-section {
+  padding: 5rem 0;
+  background-color: var(--secondary-color);
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.section-header h2 {
+  font-size: 2.5rem;
+  margin: 1rem 0;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-bottom: 4rem;
+}
+
+.service-card {
+  background-color: var(--card-background);
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px var(--shadow-color);
+  transition: transform 0.3s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-10px);
+}
+
+.service-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  background-color: rgba(0, 86, 179, 0.1);
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  color: var(--primary-color);
+}
+
+.service-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.service-card p {
+  color: var(--text-light);
+  margin-bottom: 1.5rem;
+}
+
+.service-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.partner-cta {
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+  border-radius: 12px;
+  overflow: hidden;
+  padding: 3rem;
+  text-align: center;
+  color: white;
+}
+
+.partner-cta h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.partner-cta p {
+  margin-bottom: 2rem;
+  opacity: 0.9;
+}
