@@ -4,326 +4,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Vedant Asset</title>
+    <title>Vedant Asset</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <style>
-        /* Company Page Specific Styles */
-        .about-hero {
-            padding: 120px 0 80px;
-            text-align: center;
-            background: linear-gradient(to right, #f8f9fa, #e9ecef);
-        }
-
-        .about-section {
-            padding: 80px 0;
-        }
-
-        .about-wrapper {
-            display: flex;
-            flex-direction: column;
-            gap: 40px;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        @media (min-width: 992px) {
-            .about-wrapper {
-                flex-direction: row;
-                align-items: center;
-            }
-        }
-
-        .about-image-container {
-            flex: 1;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .about-image-container img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        .about-text-container {
-            flex: 1;
-            padding: 20px;
-        }
-
-        .ceo-section {
-            background-color: #f8f9fa;
-            padding: 80px 0;
-        }
-
-        .ceo-wrapper {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .ceo-content {
-            display: flex;
-            flex-direction: column;
-            gap: 40px;
-            margin-top: 40px;
-        }
-
-        @media (min-width: 992px) {
-            .ceo-content {
-                flex-direction: row;
-                align-items: center;
-            }
-        }
-
-        .ceo-text {
-            flex: 1;
-        }
-
-        .ceo-video {
-            flex: 1;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .ceo-video img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        .play-button {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 80px;
-            height: 80px;
-            background-color: rgba(255, 255, 255, 0.8);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .play-button:hover {
-            background-color: #fff;
-            transform: translate(-50%, -50%) scale(1.1);
-        }
-
-        .play-button i {
-            color: #0056b3;
-            font-size: 30px;
-            margin-left: 8px;
-        }
-
-        .ceo-video-container {
-            position: relative;
-        }
-
-        .interviews-section {
-            padding: 80px 0;
-        }
-
-        .interviews-wrapper {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .interview-tabs {
-            display: flex;
-            overflow-x: auto;
-            gap: 10px;
-            margin-bottom: 30px;
-            padding-bottom: 10px;
-        }
-
-        .interview-tab {
-            padding: 12px 24px;
-            background-color: #f1f3f5;
-            border-radius: 30px;
-            cursor: pointer;
-            white-space: nowrap;
-            transition: all 0.3s ease;
-            border: none;
-            font-weight: 500;
-        }
-
-        .interview-tab.active, .interview-tab:hover {
-            background-color: #0056b3;
-            color: white;
-        }
-
-        .interview-content {
-            display: none;
-        }
-
-        .interview-content.active {
-            display: block;
-        }
-
-        .interview-card {
-            background-color: white;
-            border-radius: 8px;
-            padding: 30px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            margin-bottom: 20px;
-        }
-
-        .interview-card h4 {
-            margin-top: 0;
-            color: #0056b3;
-        }
-
-        .interview-card p {
-            margin-bottom: 0;
-            color: #495057;
-        }
-
-        .timeline-section {
-            padding: 80px 0;
-            background-color: #f8f9fa;
-        }
-
-        .timeline-wrapper {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .timeline {
-            position: relative;
-            margin-top: 60px;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 4px;
-            height: 100%;
-            background-color: #0056b3;
-        }
-
-        @media (max-width: 768px) {
-            .timeline::before {
-                left: 20px;
-            }
-        }
-
-        .timeline-item {
-            margin-bottom: 80px;
-            position: relative;
-        }
-
-        .timeline-item:last-child {
-            margin-bottom: 0;
-        }
-
-        .timeline-content {
-            width: calc(50% - 40px);
-            padding: 30px;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            position: relative;
-        }
-
-        .timeline-content::after {
-            content: '';
-            position: absolute;
-            top: 30px;
-            width: 20px;
-            height: 20px;
-            background-color: white;
-            transform: rotate(45deg);
-        }
-
-        .timeline-item:nth-child(odd) .timeline-content {
-            margin-left: auto;
-        }
-
-        .timeline-item:nth-child(odd) .timeline-content::after {
-            left: -10px;
-        }
-
-        .timeline-item:nth-child(even) .timeline-content::after {
-            right: -10px;
-        }
-
-        @media (max-width: 768px) {
-            .timeline-content {
-                width: calc(100% - 60px);
-                margin-left: 60px !important;
-            }
-
-            .timeline-content::after {
-                left: -10px !important;
-                right: auto !important;
-            }
-        }
-
-        .timeline-date {
-            position: absolute;
-            top: 20px;
-            width: 40px;
-            height: 40px;
-            background-color: #0056b3;
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            z-index: 1;
-        }
-
-        .timeline-item:nth-child(odd) .timeline-date {
-            left: calc(50% - 20px);
-        }
-
-        .timeline-item:nth-child(even) .timeline-date {
-            right: calc(50% - 20px);
-        }
-
-        @media (max-width: 768px) {
-            .timeline-date {
-                left: 0 !important;
-                right: auto !important;
-            }
-        }
-
-        .timeline-title {
-            margin-top: 0;
-            color: #0056b3;
-        }
-
-        .timeline-description {
-            margin-bottom: 0;
-            color: #495057;
-        }
-    </style>
 </head>
 
 <body>
     <header>
         <a href="#" class="logo">
-            <div class="logo-icon">V</div>
-            Vedant Asset
+            <img src="logo.webp" alt="Vedant Asset Logo" class="logo-image">
         </a>
         <nav>
             <ul>
-                <li><a href="#">Products</a></li>
-                <li><a href="#">About Us</a></li>
-                <li><a href="#">Contact Us</a></li>
+                <li><a href="#">Home</a></li>
+                <li><a href="company.html">Company</a></li>
+                <li class="dropdown">
+                    <a href="#">Services</a>
+                    <div class="dropdown-content">
+                        <a href="#">Vedant Wealth</a>
+                        <a href="#">Investment Plans</a>
+                        <a href="#">Retirement Planning</a>
+                    </div>
+                </li>
+                <li><a href="#">Gallery</a></li>
+                <li><a href="#">Investors</a></li>
+                <li><a href="#">News</a></li>
             </ul>
         </nav>
         <div class="header-right">
@@ -342,205 +47,399 @@
             <i class="fas fa-times"></i>
         </button>
         <ul>
-            <li><a href="#">Overview</a></li>
-            <li><a href="#">Pages</a></li>
-            <li><a href="#">Blog</a></li>
-            <li><a href="#">Get Zenith</a></li>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Company</a></li>
+            <li class="mobile-dropdown">
+                <a href="#">Services</a>
+                <ul class="mobile-dropdown-content">
+                    <li><a href="#">Vedant Wealth</a></li>
+                    <li><a href="#">Investment Plans</a></li>
+                    <li><a href="#">Retirement Planning</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Gallery</a></li>
+            <li><a href="#">Investors</a></li>
+            <li><a href="#">News</a></li>
         </ul>
+        <div class="mobile-menu-footer">
+            <a href="#" class="cta-button">Get Started</a>
+        </div>
     </div>
 
     <main>
-        <section class="about-hero">
-            <span class="section-subtitle">Our Story</span>
-            <h1>About Vedant Asset</h1>
-            <p>Building financial futures with trust, expertise, and innovation since 2007</p>
-        </section>
+        <section class="hero">
+            <div class="hero-content">
+                <span class="section-subtitle">Get Vedant Wealth Today!</span>
+                <h1>Wealth Creation Simplified</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</p>
 
-        <section class="about-section">
-            <div class="about-wrapper">
-                <div class="about-image-container">
-                    <img src="/api/placeholder/600/400" alt="Vedant Asset Office">
+                <div class="form-container">
+                    <input type="email" placeholder="Enter your e-mail">
+                    <button>Try for free</button>
                 </div>
-                <div class="about-text-container">
-                    <span class="section-subtitle">About Us</span>
-                    <h2>Your Trusted Financial Partner</h2>
-                    <p>Founded in 2007, Vedant Asset has grown from a small advisory firm to one of India's leading wealth management companies. Our journey has been built on the foundation of trust, expertise, and client-first approach.</p>
-                    <p>With a team of over 500 financial experts and presence in more than 100 cities across India, we're committed to helping individuals and businesses achieve their financial goals through innovative solutions tailored to their unique needs.</p>
-                    <p>Our core philosophy revolves around creating long-term value for our clients through disciplined investment strategies, comprehensive risk assessment, and personalized service that evolves with their changing needs.</p>
-                    <div class="about-stats-container">
-                        <div class="about-stat-item">
-                            <div class="about-stat-number">₹5000Cr+</div>
-                            <div class="about-stat-label">Assets Under Management</div>
+
+                <div class="features">
+                    <div class="features-list">
+                        <div class="feature-item">Undetectable AI content</div>
+                        <div class="feature-item">Industry-leading personalization</div>
+                        <div class="feature-item">14 days free trial</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-image">
+                <img src="mobile.png" alt="Financial Dashboard" />
+            </div>
+        </section>
+    </main>
+
+    <section class="service-offerings">
+        <span class="section-subtitle">Our Services</span>
+        <h2 class="section-title">Comprehensive Financial Solutions</h2>
+
+        <div class="service-offerings-grid">
+            <div class="offering-card">
+                <div class="offering-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3>Mutual Funds</h3>
+                <p>Access a diverse range of professionally managed investment portfolios designed to maximize
+                    returns while managing risk.</p>
+                <a href="#" class="offering-cta">Learn More <i class="fas fa-arrow-right"></i></a>
+            </div>
+
+            <div class="offering-card">
+                <div class="offering-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3>Insurance</h3>
+                <p>Comprehensive protection plans for life, health, and assets, ensuring your future remains secure.
+                </p>
+                <a href="#" class="offering-cta">Learn More <i class="fas fa-arrow-right"></i></a>
+            </div>
+
+            <div class="offering-card">
+                <div class="offering-icon">
+                    <i class="fas fa-handshake"></i>
+                </div>
+                <h3>Fixed Income</h3>
+                <p>Stable and predictable returns through government securities, corporate bonds, and fixed
+                    deposits.</p>
+                <a href="#" class="offering-cta">Learn More <i class="fas fa-arrow-right"></i></a>
+            </div>
+
+            <div class="offering-card">
+                <div class="offering-icon">
+                    <i class="fas fa-building"></i>
+                </div>
+                <h3>Business Solutions</h3>
+                <p>Tailored financial services for businesses of all sizes, from startups to enterprises.</p>
+                <a href="#" class="offering-cta">Learn More <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="partner-cta">
+            <div class="partner-cta-container">
+                <h2>Services Made More Accessible</h2>
+                <p>Join our network of partners and expand your reach in the financial services industry.</p>
+                <a href="#" class="partner-cta-button">Become a Partner</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="achievements-counter">
+        <div class="counter-grid">
+            <div class="counter-item">
+                <div class="counter-value" data-target="500000">0</div>
+                <div class="counter-label">Happy Clients</div>
+            </div>
+            <div class="counter-item">
+                <div class="counter-value" data-target="1000">0</div>
+                <div class="counter-label">Financial Products</div>
+            </div>
+            <div class="counter-item">
+                <div class="counter-value" data-target="50">0</div>
+                <div class="counter-label">Years of Excellence</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about-section">
+        <div class="about-wrapper">
+            <div class="about-image-container">
+                <img src="OFFICE.webp" alt="About Vedant Wealth">
+            </div>
+            <div class="about-text-container">
+                <span class="section-subtitle">About Us</span>
+                <h2>Your Trusted Financial Partner</h2>
+                <p>With over 50 years of experience in the financial industry, we've been helping individuals and
+                    businesses achieve their financial goals through innovative solutions and personalized service.
+                </p>
+                <div class="about-stats-container">
+                    <div class="about-stat-item">
+                        <div class="about-stat-number">₹5000Cr+</div>
+                        <div class="about-stat-label">Assets Under Management</div>
+                    </div>
+                    <div class="about-stat-item">
+                        <div class="about-stat-number">100+</div>
+                        <div class="about-stat-label">Cities Served</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="detailed-services-section">
+        <span class="section-subtitle">Detailed Services</span>
+        <h2 class="section-title">Comprehensive Insurance Solutions</h2>
+
+        <div class="service-tabs-container">
+            <button class="service-tab-button active">Life Insurance</button>
+            <button class="service-tab-button">Health Insurance</button>
+            <button class="service-tab-button">Property Insurance</button>
+        </div>
+
+        <div class="service-tab-panel active">
+            <div class="service-features-grid">
+                <div class="service-feature-item">
+                    <div class="service-feature-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h4>Term Life Insurance</h4>
+                    <p>Affordable protection for your loved ones with flexible terms and comprehensive coverage.</p>
+                </div>
+                <div class="service-feature-item">
+                    <div class="service-feature-icon">
+                        <i class="fas fa-piggy-bank"></i>
+                    </div>
+                    <h4>Endowment Plans</h4>
+                    <p>Combined protection and savings with guaranteed returns and maturity benefits.</p>
+                </div>
+                <div class="service-feature-item">
+                    <div class="service-feature-icon">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                    <h4>ULIPs</h4>
+                    <p>Investment-linked insurance plans offering market-linked returns with life coverage.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials-section">
+        <!-- TradingView Widget BEGIN -->
+        <div class="tradingview-widget-container">
+            <div class="tradingview-widget-container__widget"></div>
+            <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/" rel="noopener nofollow"
+                    target="_blank"><span class="blue-text">Track all markets on TradingView</span></a></div>
+            <script type="text/javascript"
+                src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js" async>
+                    {
+                        "symbols": [
+                            [
+                                "BSE:VEDANTASSET|1D"
+                            ]
+                        ],
+                            "chartOnly": false,
+                                "width": "100%",
+                                    "height": "100%",
+                                        "locale": "en",
+                                            "colorTheme": "dark",
+                                                "autosize": true,
+                                                    "showVolume": false,
+                                                        "showMA": false,
+                                                            "hideDateRanges": false,
+                                                                "hideMarketStatus": false,
+                                                                    "hideSymbolLogo": false,
+                                                                        "scalePosition": "right",
+                                                                            "scaleMode": "Normal",
+                                                                                "fontFamily": "-apple-system, BlinkMacSystemFont, Trebuchet MS, Roboto, Ubuntu, sans-serif",
+                                                                                    "fontSize": "10",
+                                                                                        "noTimeScale": false,
+                                                                                            "valuesTracking": "1",
+                                                                                                "changeMode": "price-and-percent",
+                                                                                                    "chartType": "area",
+                                                                                                        "maLineColor": "#2962FF",
+                                                                                                            "maLineWidth": 1,
+                                                                                                                "maLength": 9,
+                                                                                                                    "headerFontSize": "medium",
+                                                                                                                        "lineWidth": 2,
+                                                                                                                            "lineType": 0,
+                                                                                                                                "dateRanges": [
+                                                                                                                                    "1d|1",
+                                                                                                                                    "1m|30",
+                                                                                                                                    "3m|60",
+                                                                                                                                    "12m|1D",
+                                                                                                                                    "60m|1W",
+                                                                                                                                    "all|1M"
+                                                                                                                                ]
+                    }
+                </script>
+        </div>
+        <!-- TradingView Widget END -->
+        <div class="testimonials-container">
+            <div class="testimonials-slider">
+                <div class="testimonial-item">
+                    <div class="testimonial-text">
+                        "Vedant Wealth has transformed my financial journey. Their expert guidance helped me secure
+                        my family's future."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">
+                            <img src="/api/placeholder/60/60" alt="Rahul Sharma">
                         </div>
-                        <div class="about-stat-item">
-                            <div class="about-stat-number">100+</div>
-                            <div class="about-stat-label">Cities Served</div>
+                        <div class="testimonial-info">
+                            <h4>Rahul Sharma</h4>
+                            <p>Business Owner</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- More testimonials will be added dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <section class="brands">
+        <div class="brands-container">
+            <img src="/api/placeholder/120/30" alt="Spotify" class="brand">
+            <img src="/api/placeholder/120/30" alt="Framer" class="brand">
+            <img src="/api/placeholder/120/30" alt="Dribbble" class="brand">
+            <img src="/api/placeholder/120/30" alt="Sanity" class="brand">
+            <img src="/api/placeholder/120/30" alt="Contentful" class="brand">
+            <img src="/api/placeholder/120/30" alt="GitHub" class="brand">
+        </div>
+    </section>
+
+    <section class="advantages">
+        <span class="section-subtitle">Vedant Asset Card</span>
+        <h2 class="section-title">Key Advantages</h2>
+
+        <div class="advantages-grid">
+            <div class="advantage-card">
+                <h3>$2.5M+</h3>
+                <p>Average annual savings for businesses using Zenith Card's integrated expense management system.
+                    Our automated reconciliation reduces accounting overhead by up to 60%.</p>
+                <a href="#" class="advantage-link">Business solutions <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="advantage-card">
+                <h3>24/7</h3>
+                <p>Round-the-clock access to premium customer support and real-time fraud monitoring. Our AI-powered
+                    security system analyzes transactions to protect your finances at all times.</p>
+                <a href="#" class="advantage-link">Security features <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="advantage-card">
+                <h3>45%</h3>
+                <p>Higher approval rate for first-time credit applicants compared to traditional cards. Our unique
+                    underwriting model evaluates potential rather than just credit history.</p>
+                <a href="#" class="advantage-link">Credit solutions <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <section class="dashboard">
+        <span class="section-subtitle">User Interface</span>
+        <h2 class="section-title">Powerful Dashboard</h2>
+
+        <div class="dashboard-content">
+            <div class="tab-container">
+                <button class="tab-button active">Overview</button>
+                <button class="tab-button">Transactions</button>
+                <button class="tab-button">Analytics</button>
+            </div>
+
+            <img src="/api/placeholder/1100/600" alt="Dashboard Interface" class="dashboard-image">
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <div class="testimonial-container">
+            <span class="section-subtitle">Customer Reviews</span>
+            <h2 class="section-title">What Our Users Say</h2>
+
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        "Zenith Card has completely transformed how I manage my finances. The real-time
+                        notifications and spending analytics helped me save over $3,000 in the first year alone!"
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="/api/placeholder/50/50" alt="Sarah Johnson">
+                        </div>
+                        <div class="author-info">
+                            <h4>Sarah Johnson</h4>
+                            <p>Product Designer</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        "As a small business owner, the expense tracking and integration with my accounting software
+                        has been invaluable. Zenith Card streamlined our operations and cut administrative costs in
+                        half."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="/api/placeholder/50/50" alt="David Chen">
+                        </div>
+                        <div class="author-info">
+                            <h4>David Chen</h4>
+                            <p>CEO, TechStart</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        "After being rejected by multiple traditional banks, Zenith approved me and helped me build
+                        my credit. Their educational resources and spending insights are game-changers for
+                        first-time credit users."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="/api/placeholder/50/50" alt="Maria Rodriguez">
+                        </div>
+                        <div class="author-info">
+                            <h4>Maria Rodriguez</h4>
+                            <p>Graduate Student</p>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section class="ceo-section">
-            <div class="ceo-wrapper">
-                <span class="section-subtitle">Leadership</span>
-                <h2 class="section-title">From the CEO's Desk</h2>
-                <div class="ceo-content">
-                    <div class="ceo-text">
-                        <p>"At Vedant Asset, we believe that financial success is not just about numbers—it's about understanding our clients' aspirations and designing pathways to achieve them. Since our inception, we've been committed to transparency, integrity, and excellence in every aspect of our business."</p>
-                        <p>"Our team's expertise combined with cutting-edge technology allows us to stay ahead of market trends and create solutions that stand the test of time. As we look to the future, we remain dedicated to innovating and expanding our services while maintaining the personalized approach that has been our hallmark."</p>
-                        <p>"I invite you to experience the Vedant difference—where your financial goals become our mission, and your success becomes our achievement."</p>
-                        <h4>Rajiv Mehta</h4>
-                        <p>Founder & CEO, Vedant Asset</p>
-                    </div>
-                    <div class="ceo-video-container">
-                        <img src="/api/placeholder/600/400" alt="CEO Video" class="ceo-video">
-                        <div class="play-button">
-                            <i class="fas fa-play"></i>
-                        </div>
-                    </div>
-                </div>
+    <section class="cta-section">
+        <div class="cta-container">
+            <div class="cta-content">
+                <span class="section-subtitle">Get Started Today</span>
+                <h2>Take control of your financial future</h2>
+                <p>Join thousands of satisfied customers who have transformed their financial lives with Zenith
+                    Card. Apply in minutes and get a decision instantly.</p>
+                <a href="#" class="cta-button">Learn More</a>
             </div>
-        </section>
 
-        <section class="interviews-section">
-            <div class="interviews-wrapper">
-                <span class="section-subtitle">Insights</span>
-                <h2 class="section-title">Thought Leadership & Interviews</h2>
-                
-                <div class="interview-tabs">
-                    <button class="interview-tab active">Market Insights</button>
-                    <button class="interview-tab">Industry Interviews</button>
-                    <button class="interview-tab">Financial Education</button>
-                </div>
-                
-                <div class="interview-content active" id="market-insights">
-                    <div class="interview-card">
-                        <h4>Navigating Volatility: Investment Strategies for Uncertain Times</h4>
-                        <p>In this insightful discussion, our CEO Rajiv Mehta shares key strategies for building resilient portfolios amid market uncertainties, emphasizing the importance of diversification and long-term perspective in wealth creation.</p>
-                        <a href="#" class="offering-cta">Watch Interview <i class="fas fa-arrow-right"></i></a>
+            <div class="cta-form">
+                <h3>Request an Invitation</h3>
+                <form>
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" placeholder="Enter your full name">
                     </div>
-                    <div class="interview-card">
-                        <h4>The Future of Digital Assets in Traditional Portfolios</h4>
-                        <p>Our Chief Investment Officer explores the evolving landscape of digital assets and their role in modern investment strategies, providing a balanced view on risks and opportunities in this emerging asset class.</p>
-                        <a href="#" class="offering-cta">Read Article <i class="fas fa-arrow-right"></i></a>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" placeholder="Enter your email address">
                     </div>
-                </div>
-                
-                <div class="interview-content" id="industry-interviews">
-                    <div class="interview-card">
-                        <h4>Leadership in Financial Services: A Conversation with Industry Pioneers</h4>
-                        <p>This panel discussion features Rajiv Mehta alongside other industry leaders discussing the evolution of financial services in India and the innovations shaping the future of wealth management.</p>
-                        <a href="#" class="offering-cta">Watch Panel <i class="fas fa-arrow-right"></i></a>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" placeholder="Enter your phone number">
                     </div>
-                    <div class="interview-card">
-                        <h4>Building Client Trust in the Digital Age</h4>
-                        <p>Our Head of Client Relations shares insights on maintaining the human touch in wealth management while leveraging technology to enhance client experiences and outcomes.</p>
-                        <a href="#" class="offering-cta">Listen to Podcast <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-                
-                <div class="interview-content" id="financial-education">
-                    <div class="interview-card">
-                        <h4>Financial Literacy: Empowering the Next Generation</h4>
-                        <p>This educational webinar explores Vedant Asset's initiatives to improve financial literacy across different age groups, highlighting our commitment to creating a more financially informed society.</p>
-                        <a href="#" class="offering-cta">Watch Webinar <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                    <div class="interview-card">
-                        <h4>Retirement Planning: Starting Early for Maximum Impact</h4>
-                        <p>Our retirement specialists discuss essential strategies for building sustainable retirement funds, addressing common misconceptions and providing actionable advice for different life stages.</p>
-                        <a href="#" class="offering-cta">Get Resources <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
+                    <button type="submit" class="form-submit">Get Early Access</button>
+                </form>
             </div>
-        </section>
-
-        <section class="timeline-section">
-            <div class="timeline-wrapper">
-                <span class="section-subtitle">Our Journey</span>
-                <h2 class="section-title">Company Timeline</h2>
-                
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-date">2007</div>
-                        <div class="timeline-content">
-                            <h3 class="timeline-title">The Beginning</h3>
-                            <p class="timeline-description">Vedant Asset was founded in Mumbai by Rajiv Mehta with a small team of 5 financial advisors, focusing initially on mutual fund distribution and personal financial planning services.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="timeline-item">
-                        <div class="timeline-date">2011</div>
-                        <div class="timeline-content">
-                            <h3 class="timeline-title">Expansion Phase</h3>
-                            <p class="timeline-description">The company expanded to 5 major metropolitan cities across India with a team of 50+ financial experts, and launched its comprehensive wealth management platform offering tailored solutions to HNIs.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="timeline-item">
-                        <div class="timeline-date">2015</div>
-                        <div class="timeline-content">
-                            <h3 class="timeline-title">Digital Transformation</h3>
-                            <p class="timeline-description">Launched the Vedant Wealth mobile app and online platform, allowing clients to access their portfolios, investment insights, and financial planning tools from anywhere. Assets under management crossed ₹1000 crores.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="timeline-item">
-                        <div class="timeline-date">2019</div>
-                        <div class="timeline-content">
-                            <h3 class="timeline-title">Product Innovation</h3>
-                            <p class="timeline-description">Introduced alternative investment products including structured products, PMS services, and international investment opportunities. Established the Vedant Financial Education Foundation to promote financial literacy.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="timeline-item">
-                        <div class="timeline-date">2023</div>
-                        <div class="timeline-content">
-                            <h3 class="timeline-title">Strategic Growth</h3>
-                            <p class="timeline-description">Crossed the milestone of serving 500,000+ clients across 100+ cities in India. Launched AI-powered financial planning tools and expanded the corporate advisory division for businesses of all sizes.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="timeline-item">
-                        <div class="timeline-date">2025</div>
-                        <div class="timeline-content">
-                            <h3 class="timeline-title">Present Day</h3>
-                            <p class="timeline-description">Today, with ₹5000+ crores in assets under management and a team of 500+ financial experts, Vedant Asset stands as one of India's most trusted wealth management firms, continuing to innovate and expand its services.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="cta-section">
-            <div class="cta-container">
-                <div class="cta-content">
-                    <span class="section-subtitle">Join Our Journey</span>
-                    <h2>Let's Build Your Financial Future Together</h2>
-                    <p>Experience the Vedant difference with personalized wealth management solutions designed for your unique financial goals and aspirations.</p>
-                    <a href="#" class="cta-button">Meet Our Team</a>
-                </div>
-
-                <div class="cta-form">
-                    <h3>Request a Consultation</h3>
-                    <form>
-                        <div class="form-group">
-                            <label for="name">Full Name</label>
-                            <input type="text" id="name" placeholder="Enter your full name">
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email Address</label>
-                            <input type="email" id="email" placeholder="Enter your email address">
-                        </div>
-                        <div class="form-group">
-                            <label for="phone">Phone Number</label>
-                            <input type="tel" id="phone" placeholder="Enter your phone number">
-                        </div>
-                        <button type="submit" class="form-submit">Schedule Meeting</button>
-                    </form>
-                </div>
-            </div>
-        </section>
+        </div>
+    </section>
     </main>
 
     <footer>
@@ -548,11 +447,11 @@
             <div class="footer-top">
                 <div class="footer-column">
                     <a href="#" class="footer-logo">
-                        <div class="logo-icon">V</div>
+                        <div class="logo-icon">Z</div>
                         Vedant Asset
                     </a>
                     <p class="footer-description">Revolutionizing the way you manage your finances with modern,
-                        intelligent wealth solutions designed for today's world.</p>
+                        intelligent credit solutions designed for today's world.</p>
                     <div class="social-links">
                         <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
                         <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
@@ -564,10 +463,10 @@
                 <div class="footer-column">
                     <h4>Products</h4>
                     <ul class="footer-links">
-                        <li><a href="#">Mutual Funds</a></li>
-                        <li><a href="#">Insurance</a></li>
-                        <li><a href="#">Fixed Income</a></li>
+                        <li><a href="#">Zenith Card</a></li>
                         <li><a href="#">Business Solutions</a></li>
+                        <li><a href="#">Travel Benefits</a></li>
+                        <li><a href="#">Reward Program</a></li>
                         <li><a href="#">Mobile App</a></li>
                     </ul>
                 </div>
@@ -596,7 +495,7 @@
             </div>
 
             <div class="footer-bottom">
-                <p>&copy; 2025 Vedant Asset. All rights reserved.</p>
+                <p>&copy; 2025 Zenith Financial. All rights reserved.</p>
                 <div class="footer-bottom-links">
                     <a href="#">Privacy Policy</a>
                     <a href="#">Terms of Service</a>
@@ -607,40 +506,11 @@
     </footer>
 
     <script>
-        // Theme Toggle
-        const themeToggle = document.getElementById('themeToggle');
-        const body = document.body;
-        const icon = themeToggle.querySelector('i');
-
-        function setTheme(isDark) {
-            if (isDark) {
-                body.classList.remove('light-mode');
-                icon.classList.remove('fa-sun');
-                icon.classList.add('fa-moon');
-                localStorage.setItem('theme', 'dark');
-            } else {
-                body.classList.add('light-mode');
-                icon.classList.remove('fa-moon');
-                icon.classList.add('fa-sun');
-                localStorage.setItem('theme', 'light');
-            }
-        }
-
-        // Check for saved theme preference
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme === 'light') {
-            setTheme(false);
-        }
-
-        themeToggle.addEventListener('click', () => {
-            const isDarkMode = !body.classList.contains('light-mode');
-            setTheme(!isDarkMode);
-        });
-
-        // Mobile Menu Toggle
+        // Mobile menu functionality
         const mobileMenuButton = document.querySelector('.mobile-menu-button');
-        const mobileMenuClose = document.querySelector('.mobile-menu-close');
         const mobileMenu = document.querySelector('.mobile-menu');
+        const mobileMenuClose = document.querySelector('.mobile-menu-close');
+        const mobileDropdowns = document.querySelectorAll('.mobile-dropdown');
 
         mobileMenuButton.addEventListener('click', () => {
             mobileMenu.classList.add('active');
@@ -652,23 +522,59 @@
             document.body.style.overflow = '';
         });
 
-        // Interview Tab Functionality
-        const interviewTabs = document.querySelectorAll('.interview-tab');
-        const interviewContents = document.querySelectorAll('.interview-content');
-
-        interviewTabs.forEach((tab, index) => {
-            tab.addEventListener('click', () => {
-                // Remove active class from all tabs and contents
-                interviewTabs.forEach(t => t.classList.remove('active'));
-                interviewContents.forEach(c => c.classList.remove('active'));
-                
-                // Add active class to clicked tab and corresponding content
-                tab.classList.add('active');
-                interviewContents[index].classList.add('active');
+        // Handle mobile dropdowns
+        mobileDropdowns.forEach(dropdown => {
+            const link = dropdown.querySelector('a');
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                dropdown.classList.toggle('active');
             });
         });
 
-        // Animation for timeline items
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!mobileMenu.contains(e.target) && !mobileMenuButton.contains(e.target)) {
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+
+        // Close mobile menu when clicking a link
+        const mobileLinks = mobileMenu.querySelectorAll('a:not(.mobile-dropdown a)');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+
+        // Dark mode toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+
+        // Check for saved theme preference
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark' || (!savedTheme && prefersDarkScheme.matches)) {
+            document.body.classList.add('dark-theme');
+        }
+
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-theme');
+            const isDark = document.body.classList.contains('dark-theme');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        });
+
+        // Tab Functionality
+        const tabButtons = document.querySelectorAll('.tab-button');
+
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+            });
+        });
+
+        // Animation on scroll
         function isElementInViewport(el) {
             const rect = el.getBoundingClientRect();
             return (
@@ -680,11 +586,11 @@
         }
 
         function animateOnScroll() {
-            const elements = document.querySelectorAll('.timeline-item');
+            const elements = document.querySelectorAll('.advantage-card, .dashboard-image, .testimonial-card');
 
             elements.forEach(element => {
                 if (isElementInViewport(element) && !element.classList.contains('animated')) {
-                    element.style.animation = 'fadeIn 1s forwards';
+                    element.style.animation = 'fadeUp 1s forwards';
                     element.classList.add('animated');
                 }
             });
@@ -695,7 +601,91 @@
 
         // Check on scroll
         window.addEventListener('scroll', animateOnScroll);
+
+        // Counter Animation
+        function animateCounter(element) {
+            const target = parseInt(element.getAttribute('data-target'));
+            const duration = 2000; // 2 seconds
+            const step = target / (duration / 16); // 60fps
+            let current = 0;
+
+            const updateCounter = () => {
+                current += step;
+                if (current < target) {
+                    element.textContent = Math.floor(current).toLocaleString();
+                    requestAnimationFrame(updateCounter);
+                } else {
+                    element.textContent = target.toLocaleString();
+                }
+            };
+
+            updateCounter();
+        }
+
+        function checkCounterVisibility() {
+            const counters = document.querySelectorAll('.counter-value');
+            counters.forEach(counter => {
+                if (isElementInViewport(counter) && !counter.classList.contains('animated')) {
+                    animateCounter(counter);
+                    counter.classList.add('animated');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', checkCounterVisibility);
+        window.addEventListener('load', checkCounterVisibility);
+
+        // Testimonial Slider
+        const testimonialSlider = document.querySelector('.testimonials-slider');
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+
+        testimonialSlider.addEventListener('mousedown', (e) => {
+            isDown = true;
+            testimonialSlider.classList.add('active');
+            startX = e.pageX - testimonialSlider.offsetLeft;
+            scrollLeft = testimonialSlider.scrollLeft;
+        });
+
+        testimonialSlider.addEventListener('mouseleave', () => {
+            isDown = false;
+            testimonialSlider.classList.remove('active');
+        });
+
+        testimonialSlider.addEventListener('mouseup', () => {
+            isDown = false;
+            testimonialSlider.classList.remove('active');
+        });
+
+        testimonialSlider.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - testimonialSlider.offsetLeft;
+            const walk = (x - startX) * 2;
+            testimonialSlider.scrollLeft = scrollLeft - walk;
+        });
+
+        // Auto-scroll testimonials
+        let scrollInterval;
+        function startAutoScroll() {
+            scrollInterval = setInterval(() => {
+                testimonialSlider.scrollLeft += 1;
+                if (testimonialSlider.scrollLeft >= testimonialSlider.scrollWidth - testimonialSlider.clientWidth) {
+                    testimonialSlider.scrollLeft = 0;
+                }
+            }, 30);
+        }
+
+        function stopAutoScroll() {
+            clearInterval(scrollInterval);
+        }
+
+        testimonialSlider.addEventListener('mouseenter', stopAutoScroll);
+        testimonialSlider.addEventListener('mouseleave', startAutoScroll);
+        startAutoScroll();
     </script>
+    <script src="script.js"></script>
 </body>
 
 </html>
