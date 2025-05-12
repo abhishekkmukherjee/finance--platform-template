@@ -176,20 +176,20 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // Initialize with first tab immediately
+    document.addEventListener('DOMContentLoaded', () => {
+        updateServiceContent('Mutual Funds');
+        serviceTabButtons[0].classList.add('active');
+    });
+
     // Add click event listeners to tab buttons
     serviceTabButtons.forEach(button => {
         button.addEventListener('click', () => {
-            // Remove active class from all buttons
             serviceTabButtons.forEach(btn => btn.classList.remove('active'));
-            // Add active class to clicked button
             button.classList.add('active');
-            // Update content
             updateServiceContent(button.textContent);
         });
     });
-
-    // Initialize with first tab
-    updateServiceContent('Mutual Funds');
 
     // Animation on scroll
     function isElementInViewport(el) {
@@ -255,22 +255,39 @@ document.addEventListener('DOMContentLoaded', function() {
     let isDown = false;
     let startX;
     let scrollLeft;
+    let autoScrollInterval;
+
+    function startAutoScroll() {
+        autoScrollInterval = setInterval(() => {
+            testimonialSlider.scrollLeft += 1;
+            if (testimonialSlider.scrollLeft >= testimonialSlider.scrollWidth - testimonialSlider.clientWidth) {
+                testimonialSlider.scrollLeft = 0;
+            }
+        }, 30);
+    }
+
+    function stopAutoScroll() {
+        clearInterval(autoScrollInterval);
+    }
 
     testimonialSlider.addEventListener('mousedown', (e) => {
         isDown = true;
         testimonialSlider.classList.add('active');
         startX = e.pageX - testimonialSlider.offsetLeft;
         scrollLeft = testimonialSlider.scrollLeft;
+        stopAutoScroll();
     });
 
     testimonialSlider.addEventListener('mouseleave', () => {
         isDown = false;
         testimonialSlider.classList.remove('active');
+        startAutoScroll();
     });
 
     testimonialSlider.addEventListener('mouseup', () => {
         isDown = false;
         testimonialSlider.classList.remove('active');
+        startAutoScroll();
     });
 
     testimonialSlider.addEventListener('mousemove', (e) => {
@@ -281,22 +298,8 @@ document.addEventListener('DOMContentLoaded', function() {
         testimonialSlider.scrollLeft = scrollLeft - walk;
     });
 
-    // Auto-scroll testimonials
-    let scrollInterval;
-    function startAutoScroll() {
-        scrollInterval = setInterval(() => {
-            testimonialSlider.scrollLeft += 1;
-            if (testimonialSlider.scrollLeft >= testimonialSlider.scrollWidth - testimonialSlider.clientWidth) {
-                testimonialSlider.scrollLeft = 0;
-            }
-        }, 30);
-    }
-
-    function stopAutoScroll() {
-        clearInterval(scrollInterval);
-    }
-
-    testimonialSlider.addEventListener('mouseenter', stopAutoScroll);
-    testimonialSlider.addEventListener('mouseleave', startAutoScroll);
-    startAutoScroll();
+    // Start auto-scroll on page load
+    document.addEventListener('DOMContentLoaded', () => {
+        startAutoScroll();
+    });
 });
