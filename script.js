@@ -1,103 +1,186 @@
-// Mobile Menu
-const mobileMenuButton = document.getElementById('mobile-menu-button');
-const mobileMenuClose = document.getElementById('mobile-menu-close');
-const mobileMenu = document.getElementById('mobile-menu');
+// Mobile menu functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const mobileMenuButton = document.querySelector('.mobile-menu-button');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    const mobileMenuClose = document.querySelector('.mobile-menu-close');
+    const mobileDropdowns = document.querySelectorAll('.mobile-dropdown');
 
-mobileMenuButton.addEventListener('click', function() {
-    mobileMenu.classList.add('active');
-});
+    mobileMenuButton.addEventListener('click', () => {
+        mobileMenu.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    });
 
-mobileMenuClose.addEventListener('click', function() {
-    mobileMenu.classList.remove('active');
-});
+    mobileMenuClose.addEventListener('click', () => {
+        mobileMenu.classList.remove('active');
+        document.body.style.overflow = '';
+    });
 
-// Animation on scroll
-const animatedElements = document.querySelectorAll('.service-card, .about-image, .about-content, .offering-card, .about-image-container, .about-text-container');
+    // Handle mobile dropdowns
+    mobileDropdowns.forEach(dropdown => {
+        const link = dropdown.querySelector('a');
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            dropdown.classList.toggle('active');
+        });
+    });
 
-const animateOnScroll = function() {
-    animatedElements.forEach(element => {
-        const elementPosition = element.getBoundingClientRect().top;
-        const screenPosition = window.innerHeight / 1.2;
-        
-        if (elementPosition < screenPosition) {
-            element.classList.add('animated');
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!mobileMenu.contains(e.target) && !mobileMenuButton.contains(e.target)) {
+            mobileMenu.classList.remove('active');
+            document.body.style.overflow = '';
         }
     });
-};
 
-window.addEventListener('scroll', animateOnScroll);
-animateOnScroll(); // Initial check
-
-// Service Tabs
-const serviceTabs = document.querySelectorAll('.service-tab-button');
-const serviceTabPanels = document.querySelectorAll('.service-tab-panel');
-
-serviceTabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-        const target = tab.getAttribute('data-tab');
-        
-        // Remove active class from all tabs and panels
-        serviceTabs.forEach(tab => tab.classList.remove('active'));
-        serviceTabPanels.forEach(panel => panel.classList.remove('active'));
-        
-        // Add active class to clicked tab and corresponding panel
-        tab.classList.add('active');
-        document.getElementById(target).classList.add('active');
+    // Close mobile menu when clicking a link
+    const mobileLinks = mobileMenu.querySelectorAll('a:not(.mobile-dropdown a)');
+    mobileLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+            document.body.style.overflow = '';
+        });
     });
-});
 
-// Counter animation
-const counterItems = document.querySelectorAll('.counter-value');
+    // Dark mode toggle
+    const themeToggle = document.getElementById('themeToggle');
+    const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
 
-const startCounter = function() {
-    counterItems.forEach(counter => {
-        const target = parseInt(counter.getAttribute('data-target'));
+    // Check for saved theme preference
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark' || (!savedTheme && prefersDarkScheme.matches)) {
+        document.body.classList.add('dark-theme');
+    }
+
+    themeToggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-theme');
+        const isDark = document.body.classList.contains('dark-theme');
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    });
+
+    // Tab Functionality
+    const tabButtons = document.querySelectorAll('.tab-button');
+    tabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+        });
+    });
+
+    // Service Tab Functionality
+    const serviceTabButtons = document.querySelectorAll('.service-tab-button');
+    serviceTabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            serviceTabButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+        });
+    });
+
+    // Animation on scroll
+    function isElementInViewport(el) {
+        const rect = el.getBoundingClientRect();
+        return (
+            rect.top >= 0 &&
+            rect.left >= 0 &&
+            rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+            rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+        );
+    }
+
+    function animateOnScroll() {
+        const elements = document.querySelectorAll('.advantage-card, .dashboard-image, .testimonial-card');
+        elements.forEach(element => {
+            if (isElementInViewport(element) && !element.classList.contains('animated')) {
+                element.style.animation = 'fadeUp 1s forwards';
+                element.classList.add('animated');
+            }
+        });
+    }
+
+    // Initial check on load
+    window.addEventListener('load', animateOnScroll);
+    // Check on scroll
+    window.addEventListener('scroll', animateOnScroll);
+
+    // Counter Animation
+    function animateCounter(element) {
+        const target = parseInt(element.getAttribute('data-target'));
         const duration = 2000; // 2 seconds
-        const step = target / (duration / 16); // 60fps approx
+        const step = target / (duration / 16); // 60fps
         let current = 0;
-        
+
         const updateCounter = () => {
             current += step;
             if (current < target) {
-                counter.textContent = Math.ceil(current);
+                element.textContent = Math.floor(current).toLocaleString();
                 requestAnimationFrame(updateCounter);
             } else {
-                counter.textContent = target;
+                element.textContent = target.toLocaleString();
             }
         };
-        
-        const counterPosition = counter.getBoundingClientRect().top;
-        const screenPosition = window.innerHeight / 1.2;
-        
-        if (counterPosition < screenPosition) {
-            updateCounter();
-        }
-    });
-};
 
-window.addEventListener('scroll', startCounter);
-setTimeout(startCounter, 1000); // Start counters after a delay if they're visible on page load
+        updateCounter();
+    }
 
-// Testimonials auto-scroll (will be overridden if user scrolls)
-const testimonialsSlider = document.querySelector('.testimonials-slider');
-let isScrolling = false;
-
-testimonialsSlider.addEventListener('scroll', () => {
-    isScrolling = true;
-    setTimeout(() => {
-        isScrolling = false;
-    }, 3000);
-});
-
-const autoScroll = () => {
-    if (!isScrolling && testimonialsSlider) {
-        testimonialsSlider.scrollBy({
-            left: 1,
-            behavior: 'smooth'
+    function checkCounterVisibility() {
+        const counters = document.querySelectorAll('.counter-value');
+        counters.forEach(counter => {
+            if (isElementInViewport(counter) && !counter.classList.contains('animated')) {
+                animateCounter(counter);
+                counter.classList.add('animated');
+            }
         });
     }
-    requestAnimationFrame(autoScroll);
-};
 
-autoScroll();
+    window.addEventListener('scroll', checkCounterVisibility);
+    window.addEventListener('load', checkCounterVisibility);
+
+    // Testimonial Slider
+    const testimonialSlider = document.querySelector('.testimonials-slider');
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+
+    testimonialSlider.addEventListener('mousedown', (e) => {
+        isDown = true;
+        testimonialSlider.classList.add('active');
+        startX = e.pageX - testimonialSlider.offsetLeft;
+        scrollLeft = testimonialSlider.scrollLeft;
+    });
+
+    testimonialSlider.addEventListener('mouseleave', () => {
+        isDown = false;
+        testimonialSlider.classList.remove('active');
+    });
+
+    testimonialSlider.addEventListener('mouseup', () => {
+        isDown = false;
+        testimonialSlider.classList.remove('active');
+    });
+
+    testimonialSlider.addEventListener('mousemove', (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - testimonialSlider.offsetLeft;
+        const walk = (x - startX) * 2;
+        testimonialSlider.scrollLeft = scrollLeft - walk;
+    });
+
+    // Auto-scroll testimonials
+    let scrollInterval;
+    function startAutoScroll() {
+        scrollInterval = setInterval(() => {
+            testimonialSlider.scrollLeft += 1;
+            if (testimonialSlider.scrollLeft >= testimonialSlider.scrollWidth - testimonialSlider.clientWidth) {
+                testimonialSlider.scrollLeft = 0;
+            }
+        }, 30);
+    }
+
+    function stopAutoScroll() {
+        clearInterval(scrollInterval);
+    }
+
+    testimonialSlider.addEventListener('mouseenter', stopAutoScroll);
+    testimonialSlider.addEventListener('mouseleave', startAutoScroll);
+    startAutoScroll();
 });
