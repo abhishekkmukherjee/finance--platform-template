@@ -309,7 +309,7 @@ nav ul li a:hover {
 }
 
 .hero-image img {
-    max-width: 100%;
+    max-width: 70%;
     border-radius: 20px;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
     transition: var(--transition);
@@ -1865,5 +1865,206 @@ body.dark-theme p {
 
     .dashboard-image {
         margin-top: 20px;
+    }
+}
+
+/* About Section Styles */
+.about-section {
+    padding: 100px 5%;
+    background: var(--background);
+}
+
+.about-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: center;
+}
+
+.about-image-container {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.about-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+    transition: transform 0.3s ease;
+}
+
+.about-image-container:hover img {
+    transform: scale(1.05);
+}
+
+.about-text-container {
+    padding: 20px;
+}
+
+.about-text-container h2 {
+    font-size: 42px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: var(--text-primary);
+}
+
+.about-text-container p {
+    font-size: 18px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    margin-bottom: 30px;
+}
+
+.about-stats-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.about-stat-item {
+    background: var(--card-bg);
+    padding: 20px;
+    border-radius: 15px;
+    border: 1px solid var(--border);
+    text-align: center;
+}
+
+.about-stat-number {
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 10px;
+}
+
+.about-stat-label {
+    font-size: 16px;
+    color: var(--text-secondary);
+}
+
+@media screen and (max-width: 992px) {
+    .about-wrapper {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .about-image-container {
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    .about-text-container h2 {
+        font-size: 36px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .about-text-container h2 {
+        font-size: 32px;
+    }
+
+    .about-stats-container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .about-stat-number {
+        font-size: 28px;
+    }
+}
+
+/* Service Tabs Styles */
+.service-tabs-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+
+.service-tab-button {
+    padding: 12px 24px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--card-bg);
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.service-tab-button.active {
+    background: var(--accent);
+    color: white;
+    border-color: var(--accent);
+}
+
+.service-features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.service-feature-item {
+    background: var(--card-bg);
+    padding: 30px;
+    border-radius: 15px;
+    border: 1px solid var(--border);
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.service-feature-item:hover {
+    transform: translateY(-10px);
+}
+
+.service-feature-icon {
+    width: 60px;
+    height: 60px;
+    background: rgba(76, 50, 193, 0.1);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+}
+
+.service-feature-icon i {
+    font-size: 24px;
+    color: var(--accent);
+}
+
+.service-feature-item h4 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: var(--text-primary);
+}
+
+.service-feature-item p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+@media screen and (max-width: 992px) {
+    .service-features-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .service-features-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .service-tab-button {
+        width: 100%;
+        text-align: center;
     }
 }

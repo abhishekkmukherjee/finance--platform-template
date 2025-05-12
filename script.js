@@ -68,12 +68,128 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Service Tab Functionality
     const serviceTabButtons = document.querySelectorAll('.service-tab-button');
+    const serviceFeaturesGrid = document.querySelector('.service-features-grid');
+
+    // Define the content for each tab
+    const tabContents = {
+        'Mutual Funds': [
+            {
+                icon: 'fa-chart-line',
+                title: 'Equity Funds',
+                description: 'Invest in stocks of companies with high growth potential.'
+            },
+            {
+                icon: 'fa-shield-alt',
+                title: 'Debt Funds',
+                description: 'Stable returns through fixed income securities.'
+            },
+            {
+                icon: 'fa-balance-scale',
+                title: 'Hybrid Funds',
+                description: 'Balanced mix of equity and debt investments.'
+            },
+            {
+                icon: 'fa-globe',
+                title: 'International Funds',
+                description: 'Diversify globally with international markets.'
+            },
+            {
+                icon: 'fa-coins',
+                title: 'Sector Funds',
+                description: 'Focus on specific industry sectors.'
+            },
+            {
+                icon: 'fa-piggy-bank',
+                title: 'Index Funds',
+                description: 'Track market indices for passive investing.'
+            }
+        ],
+        'Fixed Income': [
+            {
+                icon: 'fa-landmark',
+                title: 'Government Bonds',
+                description: 'Secure investments backed by government guarantees.'
+            },
+            {
+                icon: 'fa-building',
+                title: 'Corporate Bonds',
+                description: 'Higher returns through corporate debt instruments.'
+            },
+            {
+                icon: 'fa-percentage',
+                title: 'Fixed Deposits',
+                description: 'Guaranteed returns with flexible tenures.'
+            }
+        ],
+        'Insurance': [
+            {
+                icon: 'fa-heart',
+                title: 'Life Insurance',
+                description: 'Protect your loved ones with comprehensive coverage.'
+            },
+            {
+                icon: 'fa-hospital',
+                title: 'Health Insurance',
+                description: 'Safeguard your health with medical coverage.'
+            },
+            {
+                icon: 'fa-home',
+                title: 'Property Insurance',
+                description: 'Protect your assets from unforeseen events.'
+            }
+        ],
+        'Business': [
+            {
+                icon: 'fa-briefcase',
+                title: 'Business Loans',
+                description: 'Fuel your business growth with flexible financing.'
+            },
+            {
+                icon: 'fa-chart-pie',
+                title: 'Investment Advisory',
+                description: 'Expert guidance for business investments.'
+            },
+            {
+                icon: 'fa-handshake',
+                title: 'Partnership Programs',
+                description: 'Strategic partnerships for business expansion.'
+            }
+        ]
+    };
+
+    // Function to update the content
+    function updateServiceContent(tabName) {
+        const content = tabContents[tabName];
+        serviceFeaturesGrid.innerHTML = '';
+
+        content.forEach(item => {
+            const featureItem = document.createElement('div');
+            featureItem.className = 'service-feature-item';
+            featureItem.innerHTML = `
+                <div class="service-feature-icon">
+                    <i class="fas ${item.icon}"></i>
+                </div>
+                <h4>${item.title}</h4>
+                <p>${item.description}</p>
+            `;
+            serviceFeaturesGrid.appendChild(featureItem);
+        });
+    }
+
+    // Add click event listeners to tab buttons
     serviceTabButtons.forEach(button => {
         button.addEventListener('click', () => {
+            // Remove active class from all buttons
             serviceTabButtons.forEach(btn => btn.classList.remove('active'));
+            // Add active class to clicked button
             button.classList.add('active');
+            // Update content
+            updateServiceContent(button.textContent);
         });
     });
+
+    // Initialize with first tab
+    updateServiceContent('Mutual Funds');
 
     // Animation on scroll
     function isElementInViewport(el) {
